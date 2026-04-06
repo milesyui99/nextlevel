@@ -86,9 +86,12 @@ export default function ProfilePage() {
 async function handleAvatarUpload(e: React.ChangeEvent<HTMLInputElement>) {
   if (!e.target.files || e.target.files.length === 0) return;
 
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session?.user) return;
+
   const file = e.target.files[0];
   const fileExt = file.name.split(".").pop();
-  const fileName = `${user.id}.${fileExt}`;
+  const fileName = `${session.user.id}.${fileExt}`;
   const filePath = `avatars/${fileName}`;
 
   const { error: uploadError } = await supabase.storage
