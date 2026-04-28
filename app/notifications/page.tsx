@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 import {
   Rss, User, Users, Compass, Bell, LogOut,
   Heart, MessageCircle, UserPlus, Loader2,
@@ -65,7 +65,7 @@ const LAST_SEEN_KEY = 'nl_notifs_last_seen'
 
 export default function NotificationsPage() {
   const router = useRouter()
-  const supabase = createClient()
+
 
   const [currentUserId, setCurrentUserId] = useState<string | null>(null)
   const [myProfile, setMyProfile] = useState<{ username: string | null; sport: string | null } | null>(null)

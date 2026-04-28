@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 import { ArrowLeft, Loader2, Check } from 'lucide-react'
 
 type ProfileForm = {
@@ -22,7 +22,7 @@ const FIELD_STYLES = {
 
 export default function EditProfilePage() {
   const router = useRouter()
-  const supabase = createClient()
+
 
   const [form, setForm] = useState<ProfileForm>({
     username: '',

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 import { Rss, User, Users, Compass, Bell, LogOut, Pencil, Loader2 } from 'lucide-react'
 
 type Profile = {
@@ -47,7 +47,7 @@ const NAV_LINKS = [
 
 export default function ProfilePage() {
   const router = useRouter()
-  const supabase = createClient()
+
 
   const [profile, setProfile] = useState<Profile | null>(null)
   const [posts, setPosts] = useState<Post[]>([])

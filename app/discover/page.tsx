@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 import {
   Rss, User, Users, Compass, Bell, LogOut,
   Loader2, UserPlus, UserCheck,
@@ -35,7 +35,7 @@ const NAV_LINKS = [
 
 export default function DiscoverPage() {
   const router = useRouter()
-  const supabase = createClient()
+
 
   const [currentUserId, setCurrentUserId] = useState<string | null>(null)
   const [myProfile, setMyProfile] = useState<Profile | null>(null)
@@ -274,7 +274,7 @@ function AthleteCard({
   currentUserId: string
   onFollowChange: (id: string, isNowFollowing: boolean) => void
 }) {
-  const supabase = createClient()
+
   const [pending, setPending] = useState(false)
 
   const displayName = athlete.full_name || athlete.username || 'Athlete'

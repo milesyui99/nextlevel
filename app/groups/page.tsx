@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 import {
   Rss, User, Users, Compass, Bell, LogOut,
   Plus, X, Loader2, Check,
@@ -44,7 +44,7 @@ const SPORT_OPTIONS = [
 
 export default function GroupsPage() {
   const router = useRouter()
-  const supabase = createClient()
+
 
   const [userId, setUserId] = useState<string | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)

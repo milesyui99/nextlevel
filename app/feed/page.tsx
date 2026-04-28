@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import { createClient } from '@/lib/supabase'
+import { supabase } from '@/lib/supabase'
 import {
   Rss, User, Users, Compass, Bell, LogOut,
   Heart, MessageCircle, Loader2, Send, ChevronDown, ChevronUp, ImageIcon, X,
@@ -62,7 +62,7 @@ const NAV_LINKS = [
 
 export default function FeedPage() {
   const router = useRouter()
-  const supabase = createClient()
+
 
   const [currentUser, setCurrentUser] = useState<{ id: string; email?: string } | null>(null)
   const [profile, setProfile] = useState<Profile | null>(null)
@@ -557,7 +557,7 @@ export default function FeedPage() {
 
 /* ── Post Card ── */
 function PostCard({ post, userId }: { post: Post; userId: string | null }) {
-  const supabase = createClient()
+
 
   const [liked, setLiked] = useState(post.likedByMe)
   const [likeCount, setLikeCount] = useState(post.likeCount)
